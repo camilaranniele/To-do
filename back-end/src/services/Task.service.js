@@ -12,7 +12,12 @@ const createNewTask = async({ task, status }) => {
   return newTask;
 }
 
+const deleteTask = async (id) => {
+  await tasks.destroy({ where: { id } })
+}
+
 module.exports = {
   getAllTasks,
   createNewTask,
+  deleteTask,
 };
