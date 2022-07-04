@@ -11,6 +11,15 @@ function TasksTable() {
     });
   }, []);
 
+  function deleteTask(id) {
+     axios
+      .delete(`${baseURL}/${id}`)
+      .then(() => {
+        const newTasks = tasks.filter((task) => task.id !== id);
+        setTasks(newTasks);
+      })
+  }
+
   return (
     <div>
       <table>
@@ -26,7 +35,7 @@ function TasksTable() {
             <td>{task.status}</td>
             <td>{task.taskDate}</td>
             <button>Atualizar</button>
-            <button>Deletar</button>
+            <button onClick={() => deleteTask(task.id)}>Deletar</button>
           </tr>
         ))}
         </tbody>
