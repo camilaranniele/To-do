@@ -1,15 +1,14 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 function TasksTable() {
   const [tasks, setTasks] = useState([]);
+  const baseURL = 'http://localhost:3001/tasks'
 
   useEffect(() => {
-    const getTasks = async () => {
-      const response = await fetch('http://localhost:3001/tasks');
-      const data = await response.json();
-      setTasks(data.map(task => ({ ...task })));
-    };
-    getTasks();
+    axios.get(baseURL).then((response) => {
+      setTasks(response.data);
+    });
   }, []);
 
   return (
