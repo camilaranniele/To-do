@@ -5,7 +5,6 @@ class Tasks extends React.Component {
   render() {
     return (
       <div>
-        Tasks
         <TasksTable />
       </div>
     )
