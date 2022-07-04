@@ -1,7 +1,11 @@
 const { tasks }= require('../database/models');
 
 const getAllTasks = async() => {
-  const allTasks = await tasks.findAll();
+  const allTasks = await tasks.findAll({order: [
+    ['task', 'ASC'],
+    ['taskDate', 'ASC'],
+    ['status', 'ASC']
+  ]});
   return allTasks;
 }
 
